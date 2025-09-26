@@ -110,12 +110,6 @@ label.pack(pady=10)
 data_frame = tk.Frame(root, relief="solid", bd=1)
 data_frame.pack(pady=5, padx=20, fill="x")
 
-description_frame = tk.Frame(data_frame)
-description_frame.pack(pady=5)
-
-select_frame = tk.Frame(data_frame)
-select_frame.pack(pady=5)
-
 tasks_frame = tk.Frame(root)
 tasks_frame.pack(fill="both", expand=True, pady=10)
 
@@ -128,19 +122,21 @@ tasks_in_progress.pack(side="left", fill="both", expand=True, padx=10)
 tasks_done = tk.LabelFrame(tasks_frame, text="Done", padx=10, pady=10)
 tasks_done.pack(side="right", fill="both", expand=True, padx=10)
 
-select_label = tk.Label(select_frame, text="Priorite : ", font=("Arial", 10))
+description_label = tk.Label(data_frame, text="Description : ", font=("Arial", 10))
+description_label.pack(side="left", padx=10)
+
+description_input = tk.Text(data_frame, width=50, height=5)
+description_input.pack(side="left", padx=10 , pady=20)
+
+select_label = tk.Label(data_frame, text="Priorite : ", font=("Arial", 10))
 select_label.pack(side="left", padx=50)
 
 selected_option = tk.StringVar(root)
 selected_option.set("Medium")
 options = ["Low", "Medium", "High"]
-tk.OptionMenu(select_frame, selected_option, *options).pack(pady=10)
+tk.OptionMenu(data_frame, selected_option, *options).pack(pady=10,side="left")
 
-description_label = tk.Label(description_frame, text="Description : ", font=("Arial", 10))
-description_label.pack(side="left", padx=10)
 
-description_input = tk.Text(description_frame, width=50, height=5)
-description_input.pack(side="left", padx=10)
 
 button = tk.Button(data_frame, text="Add Task", command=add_task,
                    bg="#4CAF50", fg="white", activebackground="#45a049",
